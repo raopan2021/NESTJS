@@ -6,7 +6,7 @@ export default defineConfig({
     description: 'nestjs学习笔记',
     base: '/NESTJS',
     // 是否忽略死链
-    ignoreDeadLinks: false,
+    ignoreDeadLinks: true,
     // 最后更新于 开关
     lastUpdated: true,
     // markdown配置
