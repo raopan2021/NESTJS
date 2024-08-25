@@ -82,6 +82,7 @@ export default defineConfig({
                             { text: '连接mysql', link: 'mysql' },
                             { text: 'Entity实体', link: 'Entity' },
                             { text: 'CRUD', link: 'CRUD' },
+                            { text: 'schedule 定时任务', link: 'schedule' },
                         ],
                     },
                 ],

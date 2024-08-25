@@ -3,8 +3,6 @@ import {
     Controller,
     Delete,
     Get,
-    Headers,
-    HttpCode,
     Param,
     Patch,
     Post,
@@ -12,15 +10,14 @@ import {
     Req,
     Res,
 } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import * as svgCaptcha from 'svg-captcha';
+import { AddUserTagDto } from './dto/add-userTag';
 import { CodeDto } from './dto/code.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PageUserDto } from './dto/page-user.dto';
-import { ApiQuery } from '@nestjs/swagger';
-import { AddUserTagDto } from './dto/add-userTag';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UserService } from './user.service';
 
 @Controller({
     path: 'user',
@@ -80,7 +77,7 @@ export class UserController {
 
     @Get()
     @ApiOperation({ summary: '查询用户分页' })
-    @ApiQuery({ type: PageUserDto })
+    // @ApiQuery({ type: PageUserDto })
     findAll(@Query() query: PageUserDto) {
         return this.userService.findAll(query);
     }
