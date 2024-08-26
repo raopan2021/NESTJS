@@ -22,8 +22,8 @@ export class DeviceTaskService {
         createDeviceDto.cpu = JSON.stringify(cores);
         createDeviceDto.model = os.cpus()[0].model;
         createDeviceDto.uptime = os.uptime();
-        createDeviceDto.totalmem = os.totalmem();
-        createDeviceDto.freemem = os.freemem();
+        createDeviceDto.totalmem = Math.round(os.totalmem() / 1048576);
+        createDeviceDto.freemem = Math.round(os.freemem() / 1048576);
 
         return this.device.save(createDeviceDto);
     }
