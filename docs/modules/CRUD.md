@@ -142,6 +142,8 @@ export class UserController {
 
 ## user.service.ts
 
+### 使用封装好的 TypeORM
+
 ```ts
 @Injectable()
 export class UserService {
@@ -206,3 +208,5 @@ export class UserService {
 ```
 
 :::
+
+### [使用原生 sql 语句](./os)

@@ -83,6 +83,7 @@ export default defineConfig({
                             { text: 'Entity实体', link: 'Entity' },
                             { text: 'CRUD', link: 'CRUD' },
                             { text: 'schedule 定时任务', link: 'schedule' },
+                            { text: 'os模块', link: 'os' },
                         ],
                     },
                 ],

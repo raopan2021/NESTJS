@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@ant-design/charts": "^2.1.2",
         "@nestjs/mapped-types": "*"
     },
     "type": "module",
@@ -7,7 +8,7 @@
         "vitepress": "^1.3.3"
     },
     "scripts": {
-        "docs:dev": "vitepress dev docs",
+        "docs:dev": "vitepress dev docs --port 5200",
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs"
     },

@@ -30,18 +30,16 @@ export class TaskService {
 
 将 MyTaskService 服务添加到你的模块的 providers 数组中，以便 NestJS 可以创建并管理它
 
-```ts {3,4,7,9}
+```ts {7}
 // app.module.ts
-import { Module } from '@nestjs/common';
-import { ScheduleModule } from '@nestjs/schedule';
-import { TaskService } from './my-task.service';
-
 @Module({
-    imports: [ScheduleModule.forRoot()],
-    controllers: [],
-    providers: [TaskService],
+    imports: [
+        TypeOrmModule.forFeature([Device]), // 关联实体
+    ],
+    controllers: [DeviceController],
+    providers: [DeviceService, DeviceTaskService],
 })
-export class AppModule {}
+export class DeviceModule {}
 ```
 
 一切设置好后，我们可以运行项目 npm run start 看看我们的定时任务效果：

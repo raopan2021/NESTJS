@@ -16,16 +16,23 @@ export class DeviceTaskService {
         const os = require('os');
         const createDeviceDto = new CreateDeviceDto();
 
-        createDeviceDto.model = os.cpus()[0].model;
-        const cpuuu = os.cpus().map((cpu) => {
-            const { model, ...rest } = cpu;
+        const cores = os.cpus().map(({ model, ...rest }) => {
             return rest;
         });
-        createDeviceDto.cpu = JSON.stringify(cpuuu);
+        createDeviceDto.cpu = JSON.stringify(cores);
+        createDeviceDto.model = os.cpus()[0].model;
         createDeviceDto.uptime = os.uptime();
         createDeviceDto.totalmem = os.totalmem();
         createDeviceDto.freemem = os.freemem();
 
         return this.device.save(createDeviceDto);
+    }
+
+    @Cron(CronExpression.EVERY_MINUTE)
+    clearCron() {
+        return this.device.query(
+            // 删除创建时间早于当前时间减去5分钟的记录
+            'delete from device where create_time < now() - interval 5 minute',
+        );
     }
 }
