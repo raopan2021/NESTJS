@@ -20,7 +20,7 @@ export class DeviceTaskService {
             return rest;
         });
         createDeviceDto.cpu = JSON.stringify(cores);
-        createDeviceDto.model = os.cpus()[0].model;
+        createDeviceDto.model = os.cpus()[0].model.trim();
         createDeviceDto.uptime = os.uptime();
         createDeviceDto.totalmem = Math.round(os.totalmem() / 1048576);
         createDeviceDto.freemem = Math.round(os.freemem() / 1048576);

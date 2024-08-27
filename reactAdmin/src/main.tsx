@@ -1,6 +1,6 @@
+import "normalize.css";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import "resetcss";
 
 import router from "./router/index.tsx";
 

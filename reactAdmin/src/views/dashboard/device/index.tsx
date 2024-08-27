@@ -7,6 +7,9 @@ import Memory from './memory';
 const Device: React.FC = () => {
     const [memoryData, setMemoryData] = useState({});
 
+    const [model, setModel] = useState('')
+    const [uptime, setUpTime] = useState('')
+
     //    每秒发送一次请求
     useEffect(() => {
         const timer = setInterval(() => {
@@ -26,18 +29,19 @@ const Device: React.FC = () => {
                         value: totalmem - freemem,
                     };
                 });
-                const { totalmem, freemem } = res[res.length - 1];
-                setMemoryData({
-                    chart,
-                    totalmem,
-                    freemem,
-                });
+                const { totalmem, freemem, model, uptime } = res[res.length - 1];
+                setMemoryData({ chart, totalmem, freemem });
+                setModel(model)
+                setUpTime(dayjs().startOf('day').second(uptime).format('HH时mm分ss秒'))
             });
     };
 
     return (
         <>
+            <h1>{model}</h1>
             <Memory memoryData={memoryData} />
+            <span style={{ fontSize: 14 }}>设备已运行： </span>
+            <span style={{ fontSize: 18, fontWeight: '600' }}>{uptime} </span>
         </>
     );
 };

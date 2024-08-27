@@ -6,7 +6,7 @@ import { Line } from '@ant-design/charts';
 const Memory: React.FC = ({ memoryData }) => {
     const theme = useSelector(state => state.theme.value);
 
-    const title = `已使用 ${parseFloat(((memoryData.totalmem - memoryData.freemem) / 1024).toFixed(2))} / ${parseFloat((memoryData.totalmem / 1024).toFixed(2))} GB`;
+    const title = `${parseFloat(((memoryData.totalmem - memoryData.freemem) / 1024).toFixed(2))} / ${parseFloat((memoryData.totalmem / 1024).toFixed(2))} GB`;
 
     const config = {
         data: memoryData.chart,
@@ -44,9 +44,11 @@ const Memory: React.FC = ({ memoryData }) => {
 
     return (
         <>
+            <span style={{ fontSize: 14 }}>内存已使用： </span>
+            <span style={{ fontSize: 18, fontWeight: '600' }}>{title} </span>
+
             <Line {...config} />
 
-            <span style={{ fontSize: 18, fontWeight: '600' }}>{title} </span>
         </ >
     );
 };
